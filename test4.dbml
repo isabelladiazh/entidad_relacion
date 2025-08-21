@@ -1,0 +1,22 @@
+Enum user_role {
+    "admin"//administrador
+    "customer"//cliente
+    "guest"//invitado
+}
+//tabla para que registremos todos los usuarios 
+//no null es que tiene que tener un valor obligatorio 
+
+Table users {
+    id serial [pk, increment]
+    username varchar(50) [not null, unique]
+    password varchar(255) [not null]
+    email varchar  [not null, unique]
+    role user_role [not null]
+    is_active boolean [not null, default: true]
+    name_job varchar(100) [not null: 'unicuces']// nombre del trabajo si no lo tiene, por defecto es unicuces
+    created_at timestamp [default: `now()`, not null]// fecha de creacion del usuario
+    updated_at timestamp // fecha de actualizacion del usuario
+    balance decimal(10,2) [default: 0.00] // el 10 son los digitos totales y 2 son los decimales  punto flotante
+    serial_number integer 
+    note: "tabla de usuarios del sistema"
+}
